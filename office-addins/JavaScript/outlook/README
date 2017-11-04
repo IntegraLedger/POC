@@ -1,0 +1,11 @@
+This is the first version of the Integra Add-In for Outlook.
+
+This uses the JavaScript API; it is not a VSTO plugin.
+
+At present, side-loading this plugin into the local desktop Outlook
+application is known to have iteration issues; that is, the prior,
+obsolete build may still be in use when Outlook launches.  I am trying to
+to pursue this problem with Microsoft.
+
+03NOV2017 - MCH
+

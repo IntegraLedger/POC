@@ -1,0 +1,8 @@
+Common materials for all Integra JavaScript add-ins.
+
+Initially, the POCs are being worked on in their own directories.  However,
+the assumption is that we will be able to produce a meaningful common module
+that reduces the code duplication between them.
+
+03NOV2017 - MCH
+
