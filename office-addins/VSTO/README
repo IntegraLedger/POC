@@ -1,0 +1,7 @@
+Office VSTO plugins, should any be necessary to write, will go here.
+
+VSTO plugins are written in C#, not JavaScript, and have somewhat different
+capabilities compared to their JavaScript cousins.
+
+03NOV2017 - MCH
+
