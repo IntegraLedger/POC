@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Excel Add-In with Commands Sample</title>
+
+    <script src="Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="Scripts/FabricUI/MessageBanner.js" type="text/javascript"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
+    <!--
+    <script src="Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>
+    <script src="Scripts/Office/1/office.js" type="text/javascript"></script>
+    -->
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <!-- STOCK <script src="Home.js" type="text/javascript"></script> -->
+
+    <!-- Unlike the Microsoft sample, we've used Webpack for bundling,
+         like a large control would need to.  For this to work, in
+         Visual Studio, you'll need to install webpack (preferably using
+         Yarn), then ensure you have the following post-build steps:
+
+            cd $(SolutionDir)\IntegraExcelDemo1Web
+            node_modules\.bin\webpack
+
+         This will produce dist/bundle.js, referenced by this file, which
+         itself is referenced by the XML manifest, which is how everything
+         is actually started and managed.
+
+         Matt Heck, Hard Problems Group, LLC 26NOV2017 -->
+    <script src="dist/bundle.js" type="text/javascript"></script>
+
+    <!-- For the Office UI Fabric, go to https://aka.ms/office-ui-fabric to learn more. -->
+    <!-- <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css"> -->
+    
+    <!-- To enable the offline use of Office UI Fabric, use: -->
+    <link rel="stylesheet" href="Content/fabric.min.css">
+    <link rel="stylesheet" href="Content/fabric.components.min.css">
+</head>
+<body>
+    <div id="content-main">
+        <div class="padding">
+            <br />
+            <div id="ledger-context">
+                <div class="ms-font-xl ms-fontWeight-semibold" style="color:green;">Verified</div>
+                <hr style="width:100%" />
+                <div class="ms-font-l ms-fontColor-neutralSecondary">Digital Signature</div></div>
+                <div class="ms-font-m" style="color:green;">Matt Heck<br />President<br />Hard Problems Group, LLC</div>
+                <br />
+                <div class="ms-font-l ms-fontColor-neutralSecondary">Ledger</div>
+                <div class="ms-font-m" style="color:green;">
+                    <span id="ledger-icon">
+                        <img src="Images/Integra-glyph-16x16.png" />
+                    </span>
+                    <span id="ledger-name" style="position:relative; left:2px; top:-2px;">Integra Ledger Global Legal Blockchain</span>
+                </div>
+                <br />
+                <div class="ms-font-l ms-fontColor-neutralSecondary">Substrate</div>
+                <div class="ms-font-m" style="color:gray;">Hyperledger Fabric</div>
+            </div>
+
+            <br /><br />
+
+            <div id="revision-history">
+                <div class="ms-font-xl">Revision History</div>
+                <hr style="width:100%" />
+                <p class="ms-font-m-plus" id="template-description"></p>
+                <div style="display:table; width:100%; border-collapse:collapse; padding-top:4px; padding-bottom:4px; padding-left:2px; padding-right:2px;">
+                    <div style="display:table-header-group; background-color:skyblue">
+                        <div style="display:table-row;">
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">Date</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">Author</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">Approved</div>
+                        </div>
+                    </div>
+                    <div style="display:table-row-group;">
+                        <div style="display:table-row; background-color:lightgreen;">
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">02OCT2017</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">mheck</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">3/3<input type="checkbox" checked/></div>
+                        </div>
+                        <div style="display:table-row; background-color:green;">
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">03OCT2017</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">mheck</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">3/3<input type="checkbox" checked/></div>
+                        </div>
+                        <div style="display:table-row; background-color:lightgreen;">
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">07OCT2017</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">dberger</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">3/3<input type="checkbox" checked /></div>
+                        </div>
+                        <div style="display:table-row; background-color:yellow;">
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">13OCT2017</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">dfisher</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">2/3<input type="checkbox" /></div>
+                        </div>
+                        <div style="display:table-row; background-color:lightsalmon;">
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">28OCT2017</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">mheck</div>
+                            <div style="display:table-cell; border:1px solid gray; padding:2px;">1/3<input type="checkbox" checked /></div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+            <br /><br />
+    
+            <div id="attestation">
+                <div class="ms-font-xl">Attestation</div>
+                <hr style="width:100%" />
+                <p class="ms-font-m-plus" id="template-description"></p>
+
+                <button class="ms-Button ms-Button--primary" id="register-button">
+                    <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                    <span class="ms-Button-label" id="register-button-text"></span>
+                    <span class="ms-Button-description" id="register-button-desc"></span>
+                </button>
+
+                <button class="ms-Button ms-Button--primary" id="verify-button">
+                    <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                    <span class="ms-Button-label" id="verify-button-text"></span>
+                    <span class="ms-Button-description" id="verify-button-desc"></span>
+                </button>
+            </div>
+    </div>
+    <div class="footer">
+        <div class="ms-Grid ms-bgColor-themeSecondary">
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white"><A href="http://www.integraledger.com"><span style="color:white;">Integra Ledger online</span></A></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FabricUI component used for displaying notifications -->
+    <div class="ms-MessageBanner" id="notification-popup">
+        <div class="ms-MessageBanner-content">
+            <div class="ms-MessageBanner-text">
+                <div class="ms-MessageBanner-clipper">
+                    <div class="ms-font-m-plus ms-fontWeight-semibold" id="notification-header"></div>
+                    <div class="ms-font-m ms-fontWeight-semilight" id="notification-body"></div>
+                </div>
+            </div>
+            <button class="ms-MessageBanner-expand" style="display:none"><i class="ms-Icon ms-Icon--chevronsDown"></i> </button>
+            <div class="ms-MessageBanner-action"></div>
+        </div>
+        <button class="ms-MessageBanner-close"> <i class="ms-Icon ms-Icon--x"></i> </button>
+    </div>
+</body>
+</html>
