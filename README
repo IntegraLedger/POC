@@ -1,0 +1,24 @@
+Integra Proof-of-Concept projects.
+
+Standards for Proof-of-Concepts are as follows:
+
+1. Rapidly demonstrate that the SDK and API for a target technology seem to
+   work properly.
+
+2. Rapidly demonstrate that we can probably integrate with that technology.
+
+3. Demonstrate, or meaningfully simulate, a rational business case using
+   the technology.
+
+4. Report progress at daily standups unless otherwise directed.
+
+5. If you are the only one working on a POC, check in progress as you make
+   it-- at least daily.  If you are working with others, avoid breaking the
+   build but do not wait longer than a few days to check in your work.
+
+6. Maintain a README file for each project that explains what it is and how
+   to build it.
+
+03NOV2017 - MCH
+
+
